@@ -21,7 +21,7 @@ builder {
         mount "/debug" => builder {
                 enable 'Session', store => 'File';
                 enable 'Debug',
-                	panels =>[qw/Memory Response Timer Environment Dancer::Settings Dancer::Logger Parameters Dancer::Version Session DBIC::QueryLog/];
+                	panels =>[qw/Memory Response Timer Environment Dancer::Settings Dancer::Logger Parameters Dancer::Version Session /];
  #       enable "ConsoleLogger";
                 enable "Plack::Middleware::Static",
                    path => qr{^/(images|js|css)/}, root => './public/';
