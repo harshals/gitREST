@@ -1,0 +1,7 @@
+[1678] debug @0.000413> [hit #1] before path is /api/crap in lib/NewApp.pm l. 21
+[1678] debug @0.012921> [hit #2] before path is /api/Book in lib/NewApp.pm l. 21
+[1678] debug @0.000430> [hit #3] before path is /api/crap in lib/NewApp.pm l. 21
+[2265] debug @0.000509> [hit #1] before path is /api/crap in lib/NewApp.pm l. 19
+[2265] debug @0.019062> [hit #2] before path is /css/style.css in lib/NewApp.pm l. 19
+[2265] debug @0.000454> [hit #3] before path is /api/crap in lib/NewApp.pm l. 19
+[2265] debug @0.000532> [hit #4] before path is /css/style.css in lib/NewApp.pm l. 19
