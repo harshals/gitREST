@@ -22,7 +22,7 @@ template: "simple"
 
 repositories: 
   adhril : 
-    path : /opt/repos/adhril.com
+    path : /opt/repos/Adhril.com
   mki : 
     path : /opt/repos/mki
 
