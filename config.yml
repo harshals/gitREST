@@ -23,10 +23,18 @@ template: "simple"
 repositories: 
   adhril : 
     path : /opt/repos/Adhril.com
+    name : ''
+  crm:
+    path : /opt/repos/CRM
+    name : 'crm.server'
   mki : 
     path : /opt/repos/mki
 
 gitlog: /tmp/git.log
+
+ 
+
+
 # template: "template_toolkit"
 # engines:
 #   template_toolkit:

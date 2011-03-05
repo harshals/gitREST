@@ -2,12 +2,6 @@ package gitREST;
 use Dancer ':syntax';
 our $VERSION = '0.1';
 
-set serializer => 'JSON';
-
-
-get '/' => sub {
-    template 'index';
-};
 
 ## index method, simply list 
 
@@ -16,14 +10,32 @@ before sub {
 	my $count = session("counter");
     session "counter" => ++$count;
 	
-	debug "before path is " . request->path;
 };
 
-post '/update/:repos' => sub {
+get '/restart/:repos' => sub {
+	
+    my $p = request->params;
+
+	my $path = config->{repositories}->{$p->{'repos'}}->{'path'}; 
+
+	my $log = config->{gitlog};
+
+	if ( -f  $path ) {
+		
+		my $output  = `/bin/sh -c 'cd $path && servers.pl restart git.server' >>$log`;
+
+		return { output => $outptu };
+	}else{
+		
+		return ( {error =>  "server not found" });
+	}
+}
+
+post '/update/:repos/:branch' => sub {
 
     my $p = request->params;
 	
-	if ($p->{'repos'} eq 'adhril') {
+	if ( -f  config->{repositories}->{$p->{'repos'}}->{'path'}) {
 		
 		my $path = config->{repositories}->{$p->{'repos'}}->{'path'};
 		my $log = config->{gitlog};
@@ -34,7 +46,7 @@ post '/update/:repos' => sub {
 
 	}else{
 		
-		send_error(  "server not found" );
+		return ( {error =>  "server not found" });
 	}
 	
 };
