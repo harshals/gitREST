@@ -20,6 +20,9 @@ charset: "UTF-8"
 
 template: "simple"
 
+logger : 'console'
+session : 'simple'
+
 repositories: 
   adhril : 
     path : /opt/repos/Adhril.com
