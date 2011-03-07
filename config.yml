@@ -29,7 +29,7 @@ repositories:
     name : 'crm.server'
     type : 'psgi'
     pidfile : /tmp/crm.pid
-    workers : 1
+    workers : 2
   mki: 
     path : /opt/repos
     name : 'mki.server'
