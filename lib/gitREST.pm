@@ -44,7 +44,7 @@ get '/server/:command/:repos' => sub {
 		
 		my $output;
 		my $pidfile = config->{repositories}->{$p->{'repos'}}->{'pidfile'}; 
-		my $starman = `which starman`; #'/usr/local/bin/starman';
+		my $starman = '/usr/local/bin/starman';
 		chomp $starman;
 		my $workers = config->{repositories}->{$p->{'repos'}}->{'workers'} || 1; 
 		my $ssd = `which start-stop-daemon`;
