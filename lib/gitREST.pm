@@ -48,7 +48,7 @@ get '/server/:command/:repos' => sub {
 		chomp $starman;
 		my $workers = config->{repositories}->{$p->{'repos'}}->{'workers'} || 1; 
 		my $ssd = `which start-stop-daemon`;
-		chmop $ssd;
+		chomp $ssd;
 
 		if ($command eq 'stop') {
 			
