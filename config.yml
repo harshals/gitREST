@@ -25,10 +25,19 @@ repositories:
     path : /opt/repos/Adhril.com
     name : ''
   crm:
-    path : /opt/repos/CRM
+    path : /Users/harshal/Developments/Projects/CRM
     name : 'crm.server'
-  mki : 
-    path : /opt/repos/mki
+    type : 'psgi'
+    pidfile : /tmp/crm.pid
+    workers : 1
+  mki: 
+    path : /opt/repos
+    name : 'mki.server'
+    type : 'fcgi'
+  mkie: 
+    path : /opt/repos
+    name : 'mki.einvoices'
+    type : 'fcgi'
 
 gitlog: /tmp/git.log
 

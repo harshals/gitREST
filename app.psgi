@@ -1,6 +1,8 @@
 use Dancer;
 load_app 'gitREST';
 
+set session => 'simple';
+
 set logger => 'PSGI';
 
 set serializer => 'JSON';
