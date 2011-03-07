@@ -54,7 +54,7 @@ get '/server/:command/:repos' => sub {
 			
 			if (-f $pidfile) {
 
-				$output  = `/bin/sh -c 'cd $path && $ssd --stop --pidfile $pidfile`;
+				$output  = `/bin/sh -c 'cd $path && $ssd --stop --pidfile $pidfile' >> $log`;
 			}else {
 				
 				return ( { error => "$pidfile does not exists"});
@@ -65,7 +65,7 @@ get '/server/:command/:repos' => sub {
 
 			unless (-f $pidfile) {
 
-				$output  = `/bin/sh -c 'cd $path &&  $starman --workers $workers --daemonize --pid $pidfile app.psgi`;
+				$output  = `/bin/sh -c 'cd $path &&  $starman --workers $workers --daemonize --pid $pidfile app.psgi' >> $log`;
 			}else {
 
 				return ( { error => "$pidfile already exists"});
@@ -73,8 +73,8 @@ get '/server/:command/:repos' => sub {
 		
 		}else {
 
-			$output  = `/bin/sh -c 'cd $path && /sbin/start-stop-daemon --stop --pidfile $pidfile`;
-			$output  .= `/bin/sh -c 'cd $path &&  $starman --workers $workers --daemonize --pid $pidfile app.psgi`;
+			$output  = `/bin/sh -c 'cd $path && /sbin/start-stop-daemon --stop --pidfile $pidfile' >> $log`;
+			$output  .= `/bin/sh -c 'cd $path &&  $starman --workers $workers --daemonize --pid $pidfile app.psgi' >> $log`;
 		}
 		
 		return { output => $output };
