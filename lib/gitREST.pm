@@ -37,7 +37,7 @@ get '/server/:command/:repos' => sub {
 
 	if ( -d $path &&  $type eq 'fcgi') {
 		
-		my $output  = "/bin/sh -c 'cd $path && servers.pl restart $name ' >>$log";
+		my $output  = `/bin/sh -c 'cd $path && servers.pl restart $name ' >>$log`;
 
 		return { output => $output };
 	}elsif ( -d $path &&  $type eq 'psgi') {
@@ -54,7 +54,7 @@ get '/server/:command/:repos' => sub {
 			
 			if (-f $pidfile) {
 
-				$output  = "/bin/sh -c 'cd $path && $ssd --stop --pidfile $pidfile";
+				$output  = `/bin/sh -c 'cd $path && $ssd --stop --pidfile $pidfile`;
 			}else {
 				
 				return ( { error => "$pidfile does not exists"});
@@ -65,7 +65,7 @@ get '/server/:command/:repos' => sub {
 
 			unless (-f $pidfile) {
 
-				$output  = "/bin/sh -c 'cd $path &&  $starman --workers $workers --daemonize --pid $pidfile app.psgi";
+				$output  = `/bin/sh -c 'cd $path &&  $starman --workers $workers --daemonize --pid $pidfile app.psgi`;
 			}else {
 
 				return ( { error => "$pidfile already exists"});
@@ -73,8 +73,8 @@ get '/server/:command/:repos' => sub {
 		
 		}else {
 
-			$output  = "/bin/sh -c 'cd $path && /sbin/start-stop-daemon --stop --pidfile $pidfile";
-			$output  .= "/bin/sh -c 'cd $path &&  $starman --workers $workers --daemonize --pid $pidfile app.psgi";
+			$output  = `/bin/sh -c 'cd $path && /sbin/start-stop-daemon --stop --pidfile $pidfile`;
+			$output  .= `/bin/sh -c 'cd $path &&  $starman --workers $workers --daemonize --pid $pidfile app.psgi`;
 		}
 		
 		return { output => $output };
