@@ -25,7 +25,7 @@ repositories:
     path : /opt/repos/Adhril.com
     name : ''
   crm:
-    path : /Users/harshal/Developments/Projects/CRM
+    path : /opt/repos/CRM 
     name : 'crm.server'
     type : 'psgi'
     pidfile : /tmp/crm.pid

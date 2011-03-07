@@ -88,10 +88,12 @@ post '/update/:repos/:branch' => sub {
 
     my $p = request->params;
 	
-	if ( -f  config->{repositories}->{$p->{'repos'}}->{'path'}) {
-		
-		my $path = config->{repositories}->{$p->{'repos'}}->{'path'};
-		my $log = config->{gitlog};
+	my $path = config->{repositories}->{$p->{'repos'}}->{'path'}; 
+	my $branch = $p->{'branch'} || branch;
+	my $log = config->{gitlog};
+
+
+	if ( -d $path  ) {
 		
 		my $output = `/bin/sh -c 'cd $path && git pull -q origin master' >> $log`;
 
