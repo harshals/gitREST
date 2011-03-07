@@ -23,6 +23,8 @@ template: "simple"
 logger : 'console'
 session : 'simple'
 
+serializer: 'JSON'
+
 repositories: 
   adhril : 
     path : /opt/repos/Adhril.com
