@@ -1,0 +1,4 @@
+to fire up the application
+
+perl ./bin/app.pl --daemon --port=91
+

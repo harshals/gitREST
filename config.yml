@@ -35,6 +35,8 @@ repositories:
     type : 'psgi'
     pidfile : /tmp/crm.pid
     workers : 2
+    port : 92
+    host : ''
   mki: 
     path : /opt/repos
     name : 'mki.server'
